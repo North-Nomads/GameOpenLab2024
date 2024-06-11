@@ -1,7 +1,7 @@
 using NorthNomads.GOL.Landscape.Flowers;
 using System.Collections.Generic;
 
-namespace NorthNomads.GOL.Landscape
+namespace NorthNomads.GOL.Landscape.Tiles
 {
     /// <summary>
     /// Represents the base interface for the landscape tiles.

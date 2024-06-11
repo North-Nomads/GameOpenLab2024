@@ -5,13 +5,11 @@ namespace NorthNomads.GOL.Landscape
 	/// <summary>
 	/// Represents the information about the <see cref="ITile"/> soil.
 	/// </summary>
-	public class SoilType : ScriptableObject
+	public enum SoilType
 	{
-		[SerializeField] private string type;
-
-		/// <summary>
-		/// Gets the current soil type name.
-		/// </summary>
-		public string Type => type;
+		Stone,
+		Soil,
+		Sand,
+		Ice
 	}
 }
