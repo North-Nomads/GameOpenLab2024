@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace NorthNomads.GOL
+namespace GOL
 {
     /// <summary>
     /// Represents a helper type for the exception throwing purposes.

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace NorthNomads.GOL.Landscape.Tiles
+namespace GOL.Landscape.Tiles
 {
     public class Tilemap : ITilemap
     {

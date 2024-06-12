@@ -1,4 +1,4 @@
-namespace NorthNomads.GOL
+namespace GOL
 {
     /// <summary>
     /// Represents an interface for all the objects that can be named.

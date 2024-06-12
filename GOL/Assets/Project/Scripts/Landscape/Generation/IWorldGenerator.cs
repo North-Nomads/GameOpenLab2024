@@ -1,6 +1,6 @@
-using NorthNomads.GOL.Landscape.Tiles;
+using GOL.Landscape.Tiles;
 
-namespace NorthNomads.GOL.Landscape.Generation
+namespace GOL.Landscape.Generation
 {
     /// <summary>
     /// Represents a service for the world generation purposes.

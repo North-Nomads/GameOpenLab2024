@@ -1,4 +1,4 @@
-namespace NorthNomads.GOL.Landscape.Generation
+namespace GOL.Landscape.Generation
 {
 	/// <summary>
 	/// Represents an utility class to provide options for the world generation process.
@@ -29,5 +29,10 @@ namespace NorthNomads.GOL.Landscape.Generation
 		/// Gets the scale of the noise to generate.
 		/// </summary>
 		public float NoiseScale { get; set; }
+
+		/// <summary>
+		/// Gets the array of obstacles to fill the map with.
+		/// </summary>
+		public PlaceableObstacle[] Obstacles { get; set; }
 	}
 }

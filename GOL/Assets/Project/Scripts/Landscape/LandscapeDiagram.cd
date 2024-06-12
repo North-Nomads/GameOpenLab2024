@@ -1,72 +1,204 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
-  <Class Name="NorthNomads.GOL.Landscape.SoilType">
-    <Position X="10.5" Y="1.25" Width="1.5" />
+  <Class Name="GOL.Landscape.PlaceableObstacle" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.5" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAA=</HashCode>
-      <FileName>Assets\Project\Scripts\Landscape\SoilType.cs</FileName>
+      <HashCode>AAAAAAAAIAAAAAAAAAgAAAIAAABAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Assets\Project\Scripts\Landscape\PlaceableObstacle.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GOL.Landscape.WorldBootstrap" Collapsed="true">
+    <Position X="13.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABABAAgAQAAAQAAAAAAAAAAKBAAAAAgAAAIAgAA=</HashCode>
+      <FileName>Assets\Project\Scripts\Landscape\WorldBootstrap.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="NorthNomads.GOL.Landscape.ITile">
-    <Position X="4" Y="1" Width="3.5" />
+  <Class Name="GOL.Landscape.Flowers.Flower">
+    <Position X="13.5" Y="17.25" Width="4.5" />
     <TypeIdentifier>
-      <HashCode>AAAQCAAAAAAAAAAAAAAABAAAAAAAQAAAAAQAAAgAAiA=</HashCode>
+      <HashCode>UAAAABAAAAAgAAAAIAgAAAYAAAAAAAAAgAAAEFAAACQ=</HashCode>
+      <FileName>Assets\Project\Scripts\Landscape\Flowers\Flower.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SoilGene" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Genes" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GOL.Landscape.Flowers.FlowerPot">
+    <Position X="3" Y="5.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAgBAAAAAFAAAAAEAAAAA=</HashCode>
+      <FileName>Assets\Project\Scripts\Landscape\Flowers\FlowerPot.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Info" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="GOL.Landscape.Flowers.FlowerPotInfo">
+    <Position X="2.5" Y="9.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAgAAAAQAAAAAABAAAAAQAAAAAAAAAAAAAQgA=</HashCode>
+      <FileName>Assets\Project\Scripts\Landscape\Flowers\FlowerPotInfo.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Slot" />
+      <Property Name="RelatedPot" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GOL.Landscape.Generation.GeneratorOptions" Collapsed="true">
+    <Position X="13.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EgAAAAAIIAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Assets\Project\Scripts\Landscape\Generation\GeneratorOptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GOL.Landscape.Tiles.TilesHandle">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAABEAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Project\Scripts\Landscape\Tiles\TilesHandle.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Tiles" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GOL.Landscape.Tiles.Tile" Collapsed="true">
+    <Position X="0.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAIAAAAAAAAAAAEAAAABQAAAAEAAAAA=</HashCode>
+      <FileName>Assets\Project\Scripts\Landscape\Tiles\Tile.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Info" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Pots" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="GOL.Landscape.Tiles.TileInfo" Collapsed="true">
+    <Position X="0.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQCAAAAAAAAAAAgAQAAAAAAAEAQAAAAAQAAAgAQgA=</HashCode>
+      <FileName>Assets\Project\Scripts\Landscape\Tiles\TileInfo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="GOL.Landscape.Flowers.IFlower">
+    <Position X="7" Y="12.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAFAAACQ=</HashCode>
+      <FileName>Assets\Project\Scripts\Landscape\Flowers\IFlower.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SoilGene" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Genes" />
+    </ShowAsCollectionAssociation>
+  </Interface>
+  <Interface Name="GOL.INameable">
+    <Position X="10.25" Y="9" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Project\Scripts\INameable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GOL.Landscape.Flowers.Genetics.IGene">
+    <Position X="14.5" Y="12.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAACA=</HashCode>
+      <FileName>Assets\Project\Scripts\Landscape\Flowers\Genetics\IGene.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GOL.Landscape.Flowers.Genetics.IAntidoteGene">
+    <Position X="11.75" Y="14.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Project\Scripts\Landscape\Flowers\Genetics\IAntidoteGene.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GOL.Landscape.Flowers.Genetics.ISoilGene">
+    <Position X="14.5" Y="14.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Project\Scripts\Landscape\Flowers\Genetics\ISoilGene.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GOL.Landscape.Flowers.Genetics.ISyntesisGene">
+    <Position X="17.5" Y="14.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Project\Scripts\Landscape\Flowers\Genetics\ISyntesisGene.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GOL.Landscape.Flowers.IPlaceableObject">
+    <Position X="6.25" Y="8.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Assets\Project\Scripts\Landscape\IPlaceableObject.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GOL.Landscape.Flowers.IFlowerPot">
+    <Position X="6.5" Y="5.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAgAAAAQAAAAAABAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Assets\Project\Scripts\Landscape\Flowers\IFlowerPot.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Slot" />
+      <Property Name="RelatedTile" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="GOL.Landscape.Tiles.ITile">
+    <Position X="6.5" Y="2" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAQCAAAAAAAAAAAgAAAAAAAAAEAQAAAAAQAAAgAAgA=</HashCode>
       <FileName>Assets\Project\Scripts\Landscape\Tiles\ITile.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="SoilType" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
-      <Property Name="Flowers" />
+      <Property Name="Pots" />
     </ShowAsCollectionAssociation>
   </Interface>
-  <Interface Name="NorthNomads.GOL.Landscape.Flowers.IFlower">
-    <Position X="7.25" Y="4.5" Width="3.25" />
+  <Interface Name="GOL.Landscape.Generation.IWorldGenerator" Collapsed="true">
+    <Position X="15.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAACQ=</HashCode>
-      <FileName>Assets\Project\Scripts\Landscape\Flowers\IFlower.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="Genes" />
-    </ShowAsCollectionAssociation>
-  </Interface>
-  <Interface Name="NorthNomads.GOL.INameable">
-    <Position X="13.5" Y="0.5" Width="2.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\Project\Scripts\INameable.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Project\Scripts\Landscape\Generation\IWorldGenerator.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="NorthNomads.GOL.Landscape.Flowers.Genetics.IGene">
-    <Position X="14.25" Y="4" Width="2.5" />
+  <Interface Name="GOL.Landscape.Generation.IWorldBuilder" Collapsed="true">
+    <Position X="13.75" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
-      <FileName>Assets\Project\Scripts\Landscape\Flowers\Genetics\IGene.cs</FileName>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Project\Scripts\Landscape\Generation\IWorldBuilder.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="NorthNomads.GOL.Landscape.Flowers.Genetics.IAntidoteGene">
-    <Position X="11.75" Y="6.75" Width="2" />
+  <Interface Name="GOL.Landscape.Tiles.ITilemap" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\Project\Scripts\Landscape\Flowers\Genetics\IAntidoteGene.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="NorthNomads.GOL.Landscape.Flowers.Genetics.ISoilGene">
-    <Position X="15" Y="7" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\Project\Scripts\Landscape\Flowers\Genetics\ISoilGene.cs</FileName>
+      <HashCode>AAAAAAAABAAAAAAACAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Project\Scripts\Landscape\Tiles\ITilemap.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="TargetSoilType" />
+      <Property Name="this[System.Int32, System.Int32]" />
     </ShowAsAssociation>
   </Interface>
-  <Interface Name="NorthNomads.GOL.Landscape.Flowers.Genetics.ISyntesisGene">
-    <Position X="18" Y="6.75" Width="2.25" />
+  <Enum Name="GOL.Landscape.SoilType" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\Project\Scripts\Landscape\Flowers\Genetics\ISyntesisGene.cs</FileName>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAQAAAAAAAAEAAAAAAAQAA=</HashCode>
+      <FileName>Assets\Project\Scripts\Landscape\SoilType.cs</FileName>
     </TypeIdentifier>
-  </Interface>
+  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

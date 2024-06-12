@@ -1,6 +1,6 @@
-using NorthNomads.GOL.Landscape.Tiles;
+using GOL.Landscape.Tiles;
 
-namespace NorthNomads.GOL.Landscape.Generation
+namespace GOL.Landscape.Generation
 {
     /// <summary>
     /// Represents a service for the world instantiation purposes.
@@ -11,6 +11,7 @@ namespace NorthNomads.GOL.Landscape.Generation
         /// Instantiates the world by specified world map info.
         /// </summary>
         /// <param name="map">The map to build tiles for.</param>
-        void InstantiateWorld(ITilemap map);
+        /// <param name="tileScale">The scale of the tile to set gaps between tiles.</param>
+        ITileWorldHandle InstantiateWorld(ITilemap map, float tileScale = 1);
     }
 }

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace NorthNomads.GOL.Landscape.Tiles
+namespace GOL.Landscape.Tiles
 {
 	/// <summary>
 	/// Represents the interface for the game world map.

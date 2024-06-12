@@ -1,19 +1,28 @@
-using NorthNomads.GOL.Landscape.Flowers;
+using GOL.Landscape.Flowers;
+using GOL.Landscape.Flowers.Genetics;
 using System;
 using System.Collections.Generic;
 
-namespace NorthNomads.GOL.Landscape.Tiles
+namespace GOL.Landscape.Tiles
 {
     /// <summary>
     /// Represents a description for the tile object.
     /// </summary>
     public class TileInfo : ITile
     {
+        const int PotsCount = 4;
+
         public TileInfo(SoilType soilType, int lockLevel, int pollutionLevel)
         {
             SoilType = soilType;
             LockLevel = lockLevel;
             PollutionLevel = pollutionLevel;
+            var pots = new IFlowerPot[PotsCount];
+            for (int i = 0; i < PotsCount; i++)
+            {
+                pots[i] = new FlowerPotInfo();
+            }
+            Pots = pots;
         }
 
         public bool IsStable => PollutionLevel <= 0;
@@ -22,20 +31,56 @@ namespace NorthNomads.GOL.Landscape.Tiles
 
         public SoilType SoilType { get; }
 
-        public int LockLevel { get; }
+        public int LockLevel { get; set; }
 
-        public int PollutionLevel { get; }
+        public int PollutionLevel { get; set; }
 
-        public IReadOnlyCollection<IFlower> Flowers { get; } = Array.Empty<IFlower>();
+        public IReadOnlyList<IFlowerPot> Pots { get; }
 
-        public void Plant(IFlower flower)
+        public void Plant(IFlower flower, IFlowerPot pot)
         {
-            throw new NotSupportedException("Flowers planting is not supported for the tile descriptions.");
+            if (!flower.CanPlant(SoilType))
+                ThrowHelper.ThrowArgumentOutOfRangeException("Can't plant the specified flower.");
+            pot.Plant(flower);
+            float plantCoefficient = flower.GetPlantCoefficient(SoilType);
+            foreach (var gene in flower.Genes)
+            {
+                switch (gene)
+                {
+                    case IAntidoteGene antidote:
+                        PollutionLevel -= (int)(antidote.ClearEfficiency * plantCoefficient);
+                        break;
+                        // TODO
+                }
+            }
         }
 
-        public void Remove(IFlower flower)
+        public void RemoveFrom(IFlowerPot pot)
         {
-            throw new NotSupportedException("Flowers removal is not supported for the tile descriptions.");
+            var flower = pot.Slot as IFlower;
+            pot.Remove();
+            if (flower != null)
+            {
+                float plantCoefficient = flower.GetPlantCoefficient(SoilType);
+                foreach (var gene in flower.Genes)
+                {
+                    switch (gene)
+                    {
+                        case IAntidoteGene antidote:
+                            PollutionLevel += (int)(antidote.ClearEfficiency * plantCoefficient);
+                            break;
+                            // TODO
+                    }
+                }
+            }
+        }
+
+        public void Tick()
+        {
+            foreach (var pot in Pots)
+            {
+                pot.Tick();
+            }
         }
     }
 }

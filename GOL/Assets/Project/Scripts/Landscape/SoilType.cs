@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace NorthNomads.GOL.Landscape
+namespace GOL.Landscape
 {
 	/// <summary>
 	/// Represents the information about the <see cref="ITile"/> soil.

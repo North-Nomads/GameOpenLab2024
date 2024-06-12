@@ -1,19 +1,24 @@
-using NorthNomads.GOL.Landscape.Flowers.Genetics;
+using GOL.Landscape.Flowers.Genetics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace NorthNomads.GOL.Landscape.Flowers
+namespace GOL.Landscape.Flowers
 {
     /// <summary>
     /// Represents the flower to plant to the tiles.
     /// </summary>
-    public interface IFlower : INameable
+    public interface IFlower : INameable, IPlaceableObject
     {
         /// <summary>
         /// Gets all the genes stored in this flower instance.
         /// </summary>
         IReadOnlyCollection<IGene> Genes { get; }
+
+        /// <summary>
+        /// Gets the soil gene for the flower. It is the required single gene for the soil adaptation.
+        /// </summary>
+        ISoilGene SoilGene { get; }
 
         /// <summary>
         /// Checks if the flower can be planted to the given soil type.
@@ -34,5 +39,11 @@ namespace NorthNomads.GOL.Landscape.Flowers
         /// </summary>
         /// <param name="gene">The gene instance to apply.</param>
         void AddGene(IGene gene);
+
+        /// <summary>
+        /// Rempoves the gene from the flower instance.
+        /// </summary>
+        /// <param name="gene">The gene to remove.</param>
+        void RemoveGene(IGene gene);
     }
 }

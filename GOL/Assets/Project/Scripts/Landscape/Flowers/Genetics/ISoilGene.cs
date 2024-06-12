@@ -1,4 +1,4 @@
-namespace NorthNomads.GOL.Landscape.Flowers.Genetics
+namespace GOL.Landscape.Flowers.Genetics
 {
     /// <summary>
     /// Represents an interface for the soil genes.
