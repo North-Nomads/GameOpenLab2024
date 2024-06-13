@@ -1,7 +1,8 @@
 using GOL.Landscape.Flowers;
 using GOL.Landscape.Flowers.Genetics;
-using System;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
+using UnityEngine;
 
 namespace GOL.Landscape.Tiles
 {
@@ -10,19 +11,34 @@ namespace GOL.Landscape.Tiles
     /// </summary>
     public class TileInfo : ITile
     {
-        const int PotsCount = 4;
+        private int _potsCount;
 
-        public TileInfo(SoilType soilType, int lockLevel, int pollutionLevel)
+        public TileInfo(SoilType soilType, int lockLevel, int pollutionLevel, SlotsProbability[] slotsProbability)
         {
             SoilType = soilType;
             LockLevel = lockLevel;
             PollutionLevel = pollutionLevel;
-            var pots = new IFlowerPot[PotsCount];
-            for (int i = 0; i < PotsCount; i++)
+            _potsCount = GetFreeSlotsQuantity(slotsProbability);
+            Pots = InstantiateFlowerPots();
+
+            int GetFreeSlotsQuantity(SlotsProbability[] slotsProbability)
             {
-                pots[i] = new FlowerPotInfo();
+                var random = Random.Range(0f, 1f);
+                foreach (SlotsProbability probability in slotsProbability)
+                {
+                    if (random < probability.Probability)
+                        return probability.SlotsAmount;
+                }
+                return slotsProbability[^1].SlotsAmount;
             }
-            Pots = pots;
+
+            IFlowerPot[] InstantiateFlowerPots()
+            {
+                var pots = new IFlowerPot[_potsCount];
+                for (int i = 0; i < _potsCount; i++)
+                    pots[i] = new FlowerPotInfo();
+                return pots;
+            }    
         }
 
         public bool IsStable => PollutionLevel <= 0;

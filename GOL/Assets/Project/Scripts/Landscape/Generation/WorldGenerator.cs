@@ -11,7 +11,7 @@ namespace GOL.Landscape.Generation
         private readonly SoilType[] soilTypes = (SoilType[])System.Enum.GetValues(typeof(SoilType));
 
         /// <inheritdoc/>
-        public ITilemap GenerateLandscape(GeneratorOptions options)
+        public ITilemap GenerateLandscape(GeneratorOptions options, SlotsProbability[] slotsProbability)
         {
             var result = new Tilemap(options.TargetWidth, options.TargetHeight);
             Vector2 size = new(options.TargetWidth, options.TargetHeight);
@@ -26,7 +26,7 @@ namespace GOL.Landscape.Generation
 
                     float lockNoise = RandomSample(Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0)) * (position + size * 5), options);
 
-                    var tile = result[x, y] = new TileInfo(soilType, (int)(pollutionNoise * options.DifficultyMultiplier), (int)(lockNoise * options.DifficultyMultiplier));
+                    var tile = result[x, y] = new TileInfo(soilType, (int)(pollutionNoise * options.DifficultyMultiplier), (int)(lockNoise * options.DifficultyMultiplier), slotsProbability);
                     int potsCount = tile.Pots.Count;
                     int placedPotFlags = (int)(pollutionNoise * (1 << potsCount)) ^ (int)(lockNoise * (1 << potsCount));
 

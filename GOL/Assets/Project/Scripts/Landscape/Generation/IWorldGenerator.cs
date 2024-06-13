@@ -12,6 +12,6 @@ namespace GOL.Landscape.Generation
         /// </summary>
         /// <param name="options">The options for the generation process.</param>
         /// <returns>The landscape tilemap for the generation.</returns>
-        ITilemap GenerateLandscape(GeneratorOptions options);
+        ITilemap GenerateLandscape(GeneratorOptions options, SlotsProbability[] probabilities);
     }
 }

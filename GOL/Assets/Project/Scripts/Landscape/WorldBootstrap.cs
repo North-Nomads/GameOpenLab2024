@@ -1,8 +1,20 @@
 using GOL.Landscape.Generation;
+using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace GOL.Landscape
 {
+    [Serializable]
+    public class SlotsProbability
+    {
+        [SerializeField] private float probability;
+        [SerializeField] private int slotsAmount;
+
+        public float Probability => probability;
+        public int SlotsAmount => slotsAmount;
+    }
+
     public class WorldBootstrap : MonoBehaviour
     {
         [SerializeField] private WorldBuilder builder;
@@ -13,6 +25,7 @@ namespace GOL.Landscape
         [SerializeField] private int seed;
         [SerializeField] private Vector2Int mapSize;
         [SerializeField] private PlaceableObstacle[] obstacles;
+        [SerializeField] private SlotsProbability[] slotsProbability;
 
         [Header("Build options")]
         [SerializeField] private float tileScale;
@@ -37,7 +50,7 @@ namespace GOL.Landscape
                 TargetWidth = mapSize.y,
                 Obstacles = obstacles,
             };
-            var map = generator.GenerateLandscape(options);
+            var map = generator.GenerateLandscape(options, slotsProbability);
             _tileWorld = builder.InstantiateWorld(map, tileScale);
             (_tileWorld as MonoBehaviour).transform.parent = transform;
         }
