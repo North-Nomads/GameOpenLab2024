@@ -15,7 +15,7 @@ namespace GOL.Landscape
         [SerializeField] private PlaceableObstacle[] obstacles;
 
         [Header("Build options")]
-        [SerializeField] private float buildWorldSize;
+        [SerializeField] private float tileScale;
 
         private ITileWorldHandle _tileWorld;
 
@@ -32,7 +32,7 @@ namespace GOL.Landscape
                 Obstacles = obstacles,
             };
             var map = generator.GenerateLandscape(options);
-            _tileWorld = builder.InstantiateWorld(map, buildWorldSize);
+            _tileWorld = builder.InstantiateWorld(map, tileScale);
             (_tileWorld as MonoBehaviour).transform.parent = transform;
         }
 

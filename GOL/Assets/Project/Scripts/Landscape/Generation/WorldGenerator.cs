@@ -21,13 +21,10 @@ namespace GOL.Landscape.Generation
                 {
                     Vector2 position = new(x, y);
                     float soilNoise = RandomSample(position, options);
-                    //Debug.Log($"{{{x},{y}}} SoilNoise: {soilNoise}");
                     SoilType soilType = soilTypes[(int)(soilNoise * soilTypes.Length)];
                     float pollutionNoise = RandomSample(position + size * 10, options);
-                    //Debug.Log($"{{{x},{y}}} PollutionNoise: {pollutionNoise}");
 
                     float lockNoise = RandomSample(Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0)) * (position + size * 5), options);
-                    //Debug.Log($"{{{x},{y}}} LockNoise: {lockNoise}");
 
                     var tile = result[x, y] = new TileInfo(soilType, (int)(pollutionNoise * options.DifficultyMultiplier), (int)(lockNoise * options.DifficultyMultiplier));
                     int potsCount = tile.Pots.Count;
