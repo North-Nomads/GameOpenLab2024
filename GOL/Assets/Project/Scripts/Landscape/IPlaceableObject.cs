@@ -7,5 +7,7 @@ namespace GOL.Landscape.Flowers
 		public GameObject PlacePrefab { get; }
 
 		void OnPlace(IFlowerPot pot);
+
+		void OnRemove(IFlowerPot pot);
 	}
 }

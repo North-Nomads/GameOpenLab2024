@@ -53,7 +53,24 @@ namespace GOL.Landscape.Flowers
             float effeciency = GetPlantCoefficient(pot.RelatedTile.SoilType);
             foreach (var gene in Genes)
             {
-                gene.OnFlowerPlace(effeciency);
+                gene.OnFlowerPlant(this, pot, effeciency);
+            }
+        }
+
+        public void OnRemove(IFlowerPot pot)
+        {
+            float effeciency = GetPlantCoefficient(pot.RelatedTile.SoilType);
+            foreach (var gene in Genes)
+            {
+                gene.OnFlowerRemove(this, pot, effeciency);
+            }
+        }
+
+        public void Tick()
+        {
+            foreach (var gene in genes)
+            {
+                gene.Tick();
             }
         }
 

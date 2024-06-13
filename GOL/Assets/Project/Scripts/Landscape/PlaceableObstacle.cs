@@ -27,7 +27,17 @@ namespace GOL.Landscape
 
         public void OnPlace(IFlowerPot pot)
         {
-            Debug.Log("Item is placed.");
+            // Do nothing.
+        }
+
+        public void OnRemove(IFlowerPot pot) 
+        { 
+            // Do nothing.
+        }
+
+        public void Tick()
+        {
+            // Do nothing.
         }
     }
 }

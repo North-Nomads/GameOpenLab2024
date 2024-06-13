@@ -23,6 +23,7 @@ public class PlayerInventory : MonoBehaviour
         {
             var resource = _resources[i];
             resource.amount += resource.resource.ResourceProductionRate * Time.deltaTime;
+            _resources[i] = resource;
         }
     }
 
