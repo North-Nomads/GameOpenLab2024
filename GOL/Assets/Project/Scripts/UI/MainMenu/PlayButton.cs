@@ -11,5 +11,15 @@ namespace GOL.Assets.Project.Scripts.UI
         {
             SceneManager.LoadScene(GameScene);
         }
+
+        public void OnCursorEntered()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnCursorLeave()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

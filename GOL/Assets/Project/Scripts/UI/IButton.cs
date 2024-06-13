@@ -3,5 +3,8 @@
     public interface IButton
     {
         void ExecuteOnClick();
+        void OnCursorLeave();
+        void OnCursorEntered();
+
     }
 }
