@@ -1,6 +1,5 @@
 using GOL.Landscape.Generation;
 using System;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace GOL.Landscape

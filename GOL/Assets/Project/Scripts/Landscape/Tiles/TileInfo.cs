@@ -1,7 +1,6 @@
 using GOL.Landscape.Flowers;
 using GOL.Landscape.Flowers.Genetics;
 using System.Collections.Generic;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 namespace GOL.Landscape.Tiles
