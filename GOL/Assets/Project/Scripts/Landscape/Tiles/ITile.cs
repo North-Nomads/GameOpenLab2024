@@ -2,11 +2,32 @@ using GOL.Landscape.Flowers;
 using System.Collections.Generic;
 
 namespace GOL.Landscape.Tiles
-{
+{   
+    /// <summary>
+    /// Defines a state of the world tile.
+    /// </summary>
+    public enum TileState
+    {
+        /// <summary>
+        /// Just an interactable tile.
+        /// </summary>
+        Common,
+
+        /// <summary>
+        /// Start tile. Player spawns here.
+        /// </summary>
+        Start,
+        
+        /// <summary>
+        /// Finish tile. Player ends here.
+        /// </summary>
+        Finish
+    }
+
     /// <summary>
     /// Represents the base interface for the landscape tiles.
     /// </summary>
-    public interface ITile : ITickable
+    public interface ITile : INotifyPlayerEnter
     {
         /// <summary>
         /// Gets a value indicating whether the tile is able to produce oxygen and is stable for the player presence.
@@ -22,6 +43,11 @@ namespace GOL.Landscape.Tiles
         /// Gets the soil type for the tile.
         /// </summary>
         SoilType SoilType { get; }
+
+        /// <summary>
+        /// Gets the state of the current tile.
+        /// </summary>
+        TileState TileState { get; }
 
         /// <summary>
         /// Gets the current lock level of the tile.

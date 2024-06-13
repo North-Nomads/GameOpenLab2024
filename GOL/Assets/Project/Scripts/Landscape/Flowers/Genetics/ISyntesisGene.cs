@@ -1,3 +1,6 @@
+using GOL.PlayerScripts;
+using GOL.Resources;
+
 namespace GOL.Landscape.Flowers.Genetics
 {
     /// <summary>
@@ -6,11 +9,11 @@ namespace GOL.Landscape.Flowers.Genetics
     /// <remarks>
     /// Syntesis genes are used for the resources production.
     /// </remarks>
-    public interface ISyntesisGene : IGene
+    public interface ISyntesisGene : IGene, INotifyPlayerEnter
     {
         /// <summary>
         /// Gets the resource produced by this gene instance.
         /// </summary>
-        object SyntesisTarget { get; }
+        IResource SyntesisTarget { get; }
     }
 }

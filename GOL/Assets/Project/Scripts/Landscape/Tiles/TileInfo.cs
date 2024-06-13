@@ -1,5 +1,6 @@
 using GOL.Landscape.Flowers;
 using GOL.Landscape.Flowers.Genetics;
+using GOL.PlayerScripts;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,12 +13,21 @@ namespace GOL.Landscape.Tiles
     {
         private int _potsCount;
 
-        public TileInfo(SoilType soilType, int lockLevel, int pollutionLevel, SlotsProbability[] slotsProbability)
+        public TileInfo(SoilType soilType, TileState tileState, int lockLevel, int pollutionLevel, SlotsProbability[] slotsProbability)
         {
             SoilType = soilType;
+            TileState = tileState;
             LockLevel = lockLevel;
             PollutionLevel = pollutionLevel;
-            _potsCount = GetFreeSlotsQuantity(slotsProbability);
+            if (TileState != TileState.Common)
+            {
+                _potsCount = 0;
+                LockLevel = PollutionLevel = 0;
+            }
+            else
+            {
+                _potsCount = GetFreeSlotsQuantity(slotsProbability);
+            }
             Pots = InstantiateFlowerPots();
 
             int GetFreeSlotsQuantity(SlotsProbability[] slotsProbability)
@@ -37,12 +47,14 @@ namespace GOL.Landscape.Tiles
                 for (int i = 0; i < _potsCount; i++)
                     pots[i] = new FlowerPotInfo();
                 return pots;
-            }    
+            }
         }
 
         public bool IsStable => PollutionLevel <= 0;
 
         public bool IsLocked => LockLevel > 0;
+
+        public TileState TileState { get; }
 
         public SoilType SoilType { get; }
 
@@ -51,6 +63,22 @@ namespace GOL.Landscape.Tiles
         public int PollutionLevel { get; set; }
 
         public IReadOnlyList<IFlowerPot> Pots { get; }
+
+        public void OnPlayerEnter(PlayerInventory player)
+        {
+            foreach (var pot in Pots)
+            {
+                pot.OnPlayerEnter(player);
+            }
+        }
+
+        public void OnPlayerLeave(PlayerInventory player)
+        {
+            foreach (var pot in Pots)
+            {
+                pot.OnPlayerLeave(player);
+            }
+        }
 
         public void Plant(IFlower flower, IFlowerPot pot)
         {
@@ -87,14 +115,6 @@ namespace GOL.Landscape.Tiles
                             // TODO
                     }
                 }
-            }
-        }
-
-        public void Tick()
-        {
-            foreach (var pot in Pots)
-            {
-                pot.Tick();
             }
         }
     }

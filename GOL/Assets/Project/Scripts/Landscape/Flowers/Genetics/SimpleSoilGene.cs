@@ -27,10 +27,5 @@ namespace GOL.Landscape.Flowers.Genetics
         {
             // Do nothing too.
         }
-
-        public void Tick()
-        {
-            // Yeah, do nothing.
-        }
     }
 }

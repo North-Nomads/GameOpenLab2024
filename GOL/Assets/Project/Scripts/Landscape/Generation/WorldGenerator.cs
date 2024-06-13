@@ -1,5 +1,6 @@
 using GOL.Landscape.Tiles;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace GOL.Landscape.Generation
 {
@@ -15,18 +16,37 @@ namespace GOL.Landscape.Generation
         {
             var result = new Tilemap(options.TargetWidth, options.TargetHeight);
             Vector2 size = new(options.TargetWidth, options.TargetHeight);
+            var random = new System.Random(options.Seed);
+            Vector2Int targetPoint = new(random.Next(-options.TargetWidth / 2, options.TargetWidth / 2), options.TargetHeight / 2 - 1);
+            Vector2Int startPoint = new(0, -options.TargetHeight / 2);
             for (int x = -options.TargetWidth / 2; x < options.TargetWidth / 2; x++)
             {
                 for (int y = -options.TargetHeight / 2; y < options.TargetHeight / 2; y++)
                 {
+                    Vector2Int positionInt = new(x, y);
+                    TileState state;
+                    if (positionInt == startPoint)
+                    {
+                        state = TileState.Start;
+                    }
+                    else if (positionInt == targetPoint)
+                    {
+                        state = TileState.Finish;
+                    }
+                    else
+                    {
+                        state = TileState.Common;
+                    }
+
                     Vector2 position = new(x, y);
                     float soilNoise = RandomSample(position, options);
                     SoilType soilType = soilTypes[(int)(soilNoise * soilTypes.Length)];
+
                     float pollutionNoise = RandomSample(position + size * 10, options);
 
                     float lockNoise = RandomSample(Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0)) * (position + size * 5), options);
 
-                    var tile = result[x, y] = new TileInfo(soilType, (int)(pollutionNoise * options.DifficultyMultiplier), (int)(lockNoise * options.DifficultyMultiplier), slotsProbability);
+                    var tile = result[x, y] = new TileInfo(soilType, state, (int)(pollutionNoise * options.DifficultyMultiplier), (int)(lockNoise * options.DifficultyMultiplier), slotsProbability);
                     int potsCount = tile.Pots.Count;
                     int placedPotFlags = (int)(pollutionNoise * (1 << potsCount)) ^ (int)(lockNoise * (1 << potsCount));
 

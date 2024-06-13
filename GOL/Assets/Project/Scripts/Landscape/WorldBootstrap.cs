@@ -31,10 +31,9 @@ namespace GOL.Landscape
 
         private ITileWorldHandle _tileWorld;
 
-        private void Start()
+        private void Awake()
         {
-            // TODO: remove existing content on start 
-            MakeWorld();
+            ResetWorld(false);
         }
 
         private void MakeWorld()

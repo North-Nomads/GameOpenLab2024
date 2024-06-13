@@ -1,5 +1,6 @@
 using GOL.Landscape.Flowers;
 using GOL.Landscape.Flowers.Genetics;
+using GOL.PlayerScripts;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace GOL.Landscape.Tiles
         [SerializeField] private GameObject pollutionPrefab;
         [SerializeField] private TileInfo info;
         [SerializeField] private FlowerPot[] pots;
+        [SerializeField] private Collider borderCollider;
 
         public TileInfo Info => info;
 
@@ -32,6 +34,30 @@ namespace GOL.Landscape.Tiles
             {
                 info.Pots[i].Initialize(this);
                 pots[i].ApplyInfo(info.Pots[i]);
+            }
+        }
+
+        private void FixedUpdate()
+        {
+            if (info != null)
+            {
+                borderCollider.enabled = info.IsLocked;
+            }
+        }
+
+        public void OnTriggerEnter(Collider other)
+        {
+            if (other.transform.parent.gameObject.TryGetComponent<PlayerInventory>(out var inventory))
+            {
+                info.OnPlayerEnter(inventory);
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.transform.parent.gameObject.TryGetComponent<PlayerInventory>(out var inventory))
+            {
+                info.OnPlayerLeave(inventory);
             }
         }
     }

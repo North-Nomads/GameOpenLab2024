@@ -1,4 +1,5 @@
 using GOL.Landscape.Tiles;
+using GOL.PlayerScripts;
 
 namespace GOL.Landscape.Flowers
 {
@@ -42,9 +43,14 @@ namespace GOL.Landscape.Flowers
             RelatedPot.RemoveItem();
         }
 
-        public void Tick()
+        public void OnPlayerEnter(PlayerInventory player)
         {
-            Slot.Tick();
+            Slot.OnPlayerEnter(player);
+        }
+
+        public void OnPlayerLeave(PlayerInventory player)
+        {
+            Slot.OnPlayerLeave(player);
         }
     }
 }

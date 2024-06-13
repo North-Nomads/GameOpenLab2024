@@ -1,13 +1,16 @@
+using GOL.PlayerScripts;
+using GOL.Resources;
 using UnityEngine;
 
 namespace GOL.Landscape.Flowers.Genetics
 {
-	public class SimpleSyntesisGene : ScriptableObject, ISyntesisGene
+    public class SimpleSyntesisGene : ScriptableObject, ISyntesisGene
 	{
         [SerializeField] private string description;
-        [SerializeReference] private object syntesisTarget;
+        [SerializeReference] private IResource syntesisTarget;
+        [SerializeField] private int productionAmount;
 
-        public object SyntesisTarget => throw new System.NotImplementedException();
+        public IResource SyntesisTarget => syntesisTarget;
 
         public string Name => name;
 
@@ -20,17 +23,31 @@ namespace GOL.Landscape.Flowers.Genetics
 
         public void OnFlowerPlant(IFlower target, IFlowerPot pot, float effeciency)
         {
-            // TODO
+            if (!syntesisTarget.IsProductionTileRelated)
+            {
+                SyntesisTarget.ResourceProductionRate += productionAmount;
+            }
         }
 
         public void OnFlowerRemove(IFlower target, IFlowerPot pot, float effeciency)
         {
-            // TODO
+            SyntesisTarget.ResourceProductionRate -= productionAmount;
         }
 
-        public void Tick()
+        public void OnPlayerEnter(PlayerInventory player)
         {
-            // TODO: somehow produce the resource.
+            if (syntesisTarget.IsProductionTileRelated)
+            {
+                SyntesisTarget.ResourceProductionRate += productionAmount;
+            }
+        }
+
+        public void OnPlayerLeave(PlayerInventory player)
+        {
+            if (syntesisTarget.IsProductionTileRelated)
+            {
+                SyntesisTarget.ResourceProductionRate -= productionAmount;
+            }
         }
     }
 }

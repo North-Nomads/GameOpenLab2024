@@ -27,10 +27,5 @@ namespace GOL.Landscape.Flowers.Genetics
         {
             pot.RelatedTile.PollutionLevel += (int)(ClearEfficiency * effeciency);
         }
-
-        public void Tick()
-        {
-            // Yeah, do nothing.
-        }
     }
 }

@@ -1,5 +1,7 @@
 using GOL.Landscape.Flowers.Genetics;
+using GOL.PlayerScripts;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace GOL.Landscape.Flowers
@@ -66,11 +68,19 @@ namespace GOL.Landscape.Flowers
             }
         }
 
-        public void Tick()
+        public void OnPlayerEnter(PlayerInventory player)
         {
-            foreach (var gene in genes)
+            foreach (var gene in Genes.OfType<ISyntesisGene>())
             {
-                gene.Tick();
+                gene.OnPlayerEnter(player);
+            }
+        }
+
+        public void OnPlayerLeave(PlayerInventory player)
+        {
+            foreach (var gene in Genes.OfType<ISyntesisGene>())
+            {
+                gene.OnPlayerLeave(player);
             }
         }
 

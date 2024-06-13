@@ -24,6 +24,7 @@ namespace GOL.Landscape.Flowers
 
 		public void AddItem(IPlaceableObject item)
 		{
+			item ??= PlaceableObstacle.EmptyPlaceable;
             _item = Instantiate(item.PlacePrefab, transform);
             item.OnPlace(pot);
         }

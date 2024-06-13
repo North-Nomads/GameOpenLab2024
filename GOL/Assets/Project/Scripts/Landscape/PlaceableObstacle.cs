@@ -1,4 +1,5 @@
 using GOL.Landscape.Flowers;
+using GOL.PlayerScripts;
 using System;
 using UnityEngine;
 
@@ -35,7 +36,12 @@ namespace GOL.Landscape
             // Do nothing.
         }
 
-        public void Tick()
+        public void OnPlayerEnter(PlayerInventory inventory)
+        {
+            // Do nothing.
+        }
+
+        public void OnPlayerLeave(PlayerInventory inventory)
         {
             // Do nothing.
         }

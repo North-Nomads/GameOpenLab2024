@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IResource
+namespace GOL.Resources
 {
-    public float ResourceProductionRate { get; }
+    public interface IResource
+    {
+        public float ResourceProductionRate { get; set; }
 
-    public string ResourceName { get; }
-    public string ResourceDescription { get; }
+        public string ResourceName { get; }
+        public string ResourceDescription { get; }
 
+        public bool IsProductionTileRelated { get; }
 
+        public bool IsStabilityRelated { get; }
+    }
 }

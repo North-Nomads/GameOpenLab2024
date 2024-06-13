@@ -6,6 +6,8 @@ namespace GOL.Landscape.Generation
     public class WorldBuilder : MonoBehaviour, IWorldBuilder
     {
         [SerializeField] private Tile[] tilePrefabs;
+        [SerializeField] private PlayerSpawnerTile startTile;
+        [SerializeField] private PlayerFinishTile finishTile;
 
         public ITileWorldHandle InstantiateWorld(ITilemap map, float tileScale = 1f)
         {
@@ -15,7 +17,19 @@ namespace GOL.Landscape.Generation
                 for (int y = -map.Height / 2; y < map.Height / 2; y++)
                 {
                     var info = map[x, y];
-                    var prefab = tilePrefabs[(int)info.SoilType];
+                    Tile prefab;
+                    if (info.TileState == TileState.Start)
+                    {
+                        prefab = startTile;
+                    }
+                    else if (info.TileState == TileState.Finish)
+                    {
+                        prefab = finishTile;
+                    }
+                    else
+                    {
+                        prefab = tilePrefabs[(int)info.SoilType];
+                    }
                     var tile = Instantiate(prefab, new Vector3(x * tileScale, 0, y * tileScale), Quaternion.identity);
                     tile.ApplyInfo((TileInfo)info);
                     tile.transform.parent = world.transform;

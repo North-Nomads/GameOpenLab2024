@@ -3,7 +3,7 @@ namespace GOL.Landscape.Flowers.Genetics
 	/// <summary>
 	/// Represents an interface for the flower modification genes.
 	/// </summary>
-	public interface IGene : INameable, ITickable
+	public interface IGene : INameable
 	{
 		/// <summary>
 		/// Handles gene application process.
