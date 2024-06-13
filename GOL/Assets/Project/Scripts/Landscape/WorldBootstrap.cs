@@ -19,6 +19,12 @@ namespace GOL.Landscape
 
         private ITileWorldHandle _tileWorld;
 
+        private void Start()
+        {
+            // TODO: remove existing content on start 
+            MakeWorld();
+        }
+
         private void MakeWorld()
         {
             var generator = new WorldGenerator();
